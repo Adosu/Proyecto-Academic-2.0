@@ -1,0 +1,121 @@
+.navbar {
+  background-color: #1c4587;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navbar-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-left a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.navbar-left a:hover {
+  background-color: white;
+  color: #1c4587;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+/* Línea inferior para ruta activa */
+.navbar-left a.activo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px 2px 0 0;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* NUEVO: Menú desplegable con iniciales */
+.usuario-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.circulo-iniciales {
+  background-color: white;
+  color: #1c4587;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.flecha {
+  margin-left: 6px;
+  font-size: 12px;
+  color: white;
+}
+
+.dropdown-opciones {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 160px;
+  z-index: 1000;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-opciones a {
+  padding: 10px 16px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #1c4587;
+  cursor: pointer;
+}
+
+.dropdown-opciones a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-opciones hr {
+  margin: 8px 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.dropdown-opciones .cerrar {
+  margin-top: 6px;
+}

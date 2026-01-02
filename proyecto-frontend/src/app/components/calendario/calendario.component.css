@@ -1,0 +1,75 @@
+.calendario-container {
+  max-width: 1000px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.calendario-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #003366;
+}
+
+.calendario-header button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.dia-header {
+  font-weight: bold;
+  text-align: center;
+  color: #003366;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ccc;
+}
+
+.dia {
+  border: 1px solid #ddd;
+  min-height: 100px;
+  padding: 4px;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.dia.hoy {
+  border: 2px solid #003366;
+  background-color: #e8f0ff;
+}
+
+.numero-dia {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.evento {
+  font-size: 12px;
+  background-color: #e1f5fe;
+  color: #003366;
+  padding: 2px 4px;
+  margin-bottom: 2px;
+  border-radius: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}

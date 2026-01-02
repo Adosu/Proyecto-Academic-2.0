@@ -1,0 +1,40 @@
+<div class="recordatorio-container" *ngIf="form">
+  <h2>{{ modo === 'crear' ? 'Nuevo Recordatorio' : 'Modificar Recordatorio' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" formControlName="titulo" />
+      <div class="error" *ngIf="f['titulo'].touched && f['titulo'].invalid">
+        <small *ngIf="f['titulo'].errors?.['required']">El título es obligatorio.</small>
+        <small *ngIf="f['titulo'].errors?.['minlength']">Debe tener al menos 4 caracteres.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaLimite">Fecha límite</label>
+      <input id="fechaLimite" type="date" formControlName="fechaLimite" />
+      <div class="error" *ngIf="f['fechaLimite'].touched && f['fechaLimite'].invalid">
+        <small>La fecha límite es obligatoria.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="hora">Hora</label>
+      <input id="hora" type="time" formControlName="hora" />
+      <div class="error" *ngIf="f['hora'].touched && f['hora'].invalid">
+        <small>La hora es obligatoria.</small>
+      </div>
+    </div>
+
+    <div class="botones">
+      <button type="submit" [disabled]="form.invalid">Guardar</button>
+      <button type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

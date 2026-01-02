@@ -1,0 +1,60 @@
+.detalle-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.detalle-item {
+  margin-bottom: 12px;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #001c3d;
+}
+
+.agregar-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.agregar-btn:hover {
+  background-color: #001c3d;
+}
+
+.input-clave {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.input-clave:focus {
+  border-color: #003366;
+}
+
+.snackbar-success {
+  background-color: #2e7d32; /* verde */
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #c62828; /* rojo */
+  color: white;
+}

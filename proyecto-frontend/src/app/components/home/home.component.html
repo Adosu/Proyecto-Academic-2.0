@@ -1,0 +1,10 @@
+<div class="home-container">
+  <h2>GESTOR ACADEMICO - ACADEMIC</h2>
+  <h3>MATERIAS ACTUALES</h3>
+
+  <div class="materia-item" *ngFor="let materia of materias">
+    <a [routerLink]="['/detalle-materia', materia.idMateria]">
+      {{ materia.nombreMateria }} - {{ materia.cursoParalelo }} - {{ materia.nombreDocente }}
+    </a>
+  </div>
+</div>

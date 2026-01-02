@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <span class="navbar-logo">Academic</span>
+    <a routerLink="/home" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Página Principal</a>
+    <a routerLink="/actividades" routerLinkActive="activo">Área personal</a>
+    <a routerLink="/cursos" routerLinkActive="activo">Mis cursos</a>
+  </div>
+
+  <div class="navbar-right" *ngIf="usuario">
+    <div class="usuario-dropdown" #menuDropdown (click)="toggleMenu()">
+      <div class="circulo-iniciales">{{ getIniciales(usuario.nombre, usuario.apellido) }}</div>
+      <span class="flecha">&#9662;</span>
+
+      <div class="dropdown-opciones" *ngIf="menuAbierto">
+        <a (click)="irAPerfil()">Perfil</a>
+        <a (click)="irARecordatorios()">Recordatorios</a>
+        <a (click)="irACalendario()">Calendario</a>
+        <hr />
+        <a class="cerrar" (click)="logout()">Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+</nav>

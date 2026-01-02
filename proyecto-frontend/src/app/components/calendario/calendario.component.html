@@ -1,0 +1,32 @@
+<div class="calendario-container">
+  <div class="calendario-header">
+    <button (click)="cambiarMes(-1)">←</button>
+    <h2>{{ getNombreMes() | titlecase }} {{ anioActual }}</h2>
+    <button (click)="cambiarMes(1)">→</button>
+  </div>
+
+  <div class="calendario-grid">
+    <div class="dia-header" *ngFor="let d of ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']">{{ d }}</div>
+
+    <ng-container *ngIf="diasDelMes.length > 0">
+      <ng-container *ngFor="let dia of diasDelMes">
+        <div
+            class="dia"
+            [class.hoy]="esHoy(dia)"
+            [style.gridColumnStart]="dia.getDate() === 1 ? (dia.getDay() === 0 ? 7 : dia.getDay()) : null"
+        >
+          <div class="numero-dia">{{ dia.getDate() }}</div>
+          <div class="recordatorios">
+            <div
+              *ngFor="let r of obtenerRecordatoriosPorFecha(dia)"
+              class="evento"
+              [title]="r.titulo + ' - ' + r.hora + '\n' + r.descripcion"
+            >
+              {{ r.titulo }} - {{ r.hora }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

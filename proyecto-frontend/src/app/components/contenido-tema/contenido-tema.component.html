@@ -1,0 +1,53 @@
+<div class="contenido-tema-container">
+  <!-- Entrada nueva tipo etiqueta -->
+  <div *ngIf="!modoLectura && !mostrarNuevo" class="nuevo-texto-placeholder" (click)="mostrarInputNuevo()">
+    Nuevo contenido...
+  </div>
+
+  <!-- Campo para nuevo contenido -->
+  <textarea
+    *ngIf="!modoLectura && mostrarNuevo"
+    #nuevoContenidoInput
+    [(ngModel)]="nuevoContenido"
+    placeholder="Nuevo contenido..."
+    (keydown)="detectarTecla($event)"
+    (blur)="blurNuevoContenido()"
+    (input)="ajustarAlturaTextarea(nuevoContenidoInput)"
+    (focus)="ajustarAlturaTextarea(nuevoContenidoInput)"
+    class="input-contenido"
+  ></textarea>
+
+  <!-- Lista de contenidos -->
+  <ul *ngIf="contenidos.length > 0; else sinContenidos" class="lista-contenidos">
+    <li *ngFor="let c of contenidos">
+      <div *ngIf="editandoId === c.idContenido; else verContenido" class="edicion">
+        <textarea
+          #inputEditarContenido
+          [(ngModel)]="textoTemporal"
+          (keydown)="detectarTeclaEdicion($event, c)"
+          (blur)="guardarEdicion(c)"
+          (input)="ajustarAlturaTextarea(inputEditarContenido)"
+          (focus)="ajustarAlturaTextarea(inputEditarContenido)"
+          class="input-contenido"
+        ></textarea>
+      </div>
+
+      <ng-template #verContenido>
+        <div class="contenido-renderizado" (click)="habilitarEdicion(c)">
+          {{ c.texto }}
+        </div>
+        <button *ngIf="!modoLectura" class="btn-eliminar" (click)="eliminarContenido(c.idContenido)">🗑️</button>
+      </ng-template>
+    </li>
+  </ul>
+
+  <ng-template #sinContenidos></ng-template>
+</div>
+
+<app-modal-confirmacion
+  [visible]="modalVisible"
+  [titulo]="modalTitulo"
+  [mensaje]="modalMensaje"
+  (aceptar)="confirmarEliminacionContenido()"
+  (cancelar)="cancelarEliminacionContenido()">
+</app-modal-confirmacion>

@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="login-box">
+    <img src="img/academic-logo.png" alt="Logo" class="logo" />
+    <h2 class="titulo">Ucademic</h2>
+
+    <h4 class="subtitulo">Autenticación:</h4>
+
+    <form (ngSubmit)="login()">
+      <input
+        type="email"
+        [(ngModel)]="correo"
+        name="correo"
+        placeholder="Correo electrónico"
+        required
+      />
+      <input
+        type="password"
+        [(ngModel)]="contrasena"
+        name="contrasena"
+        placeholder="Contraseña"
+        required
+      />
+      <button type="submit">Acceder</button>
+    </form>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <p class="registro-texto">¿No tienes una cuenta?</p>
+    <button class="registro-btn" routerLink="/registro">Registrarse</button>
+  </div>
+</div>

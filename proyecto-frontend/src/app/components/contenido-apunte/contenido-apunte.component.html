@@ -1,0 +1,83 @@
+<div class="contenido-apunte-container">
+
+  <!-- BOTÓN DE MODO -->
+  <div class="modo-toggle-container">
+    <button
+      class="modo-toggle-btn"
+      [ngClass]="modoLectura ? 'modo-lectura' : 'modo-edicion'"
+      (click)="alternarModo()">
+      {{ modoLectura ? 'Modo Lectura' : 'Modo Edición' }}
+    </button>
+  </div>
+
+  <!-- Campo NUEVO TEMA PADRE -->
+  <div class="formulario-tema" *ngIf="!modoLectura">
+    <input
+      type="text"
+      class="input-tema"
+      placeholder="Nuevo tema padre (Enter para añadir)"
+      [(ngModel)]="nuevoTema"
+      (keydown.enter)="agregarTema()"
+    />
+  </div>
+
+  <!-- Renderizar los temas padres recursivamente -->
+  <ng-container *ngFor="let tema of temasPadre">
+    <ng-container *ngTemplateOutlet="renderTema; context: { $implicit: tema, nivel: 0 }"></ng-container>
+  </ng-container>
+
+  <!-- Plantilla recursiva -->
+  <ng-template #renderTema let-tema let-nivel="nivel">
+    <div class="bloque-tema" [style.marginLeft.px]="nivel * 20">
+      <!-- Edición -->
+      <div *ngIf="editandoId === tema.idTema; else verTitulo">
+        <input
+          #inputEditarRef
+          [(ngModel)]="nombreTemporal"
+          (keydown.enter)="guardarEdicion(tema)"
+          (keydown.escape)="cancelarEdicion()"
+          (blur)="guardarEdicion(tema)"
+          class="input-tema"
+        />
+      </div>
+
+      <ng-template #verTitulo>
+        <div class="titulo-tema">
+          <span (click)="!modoLectura && habilitarEdicion(tema)">{{ tema.nombre }}</span>
+          <span *ngIf="!modoLectura">
+            <button class="btn-subtema" (click)="agregarSubtema(tema); $event.stopPropagation()">➕</button>
+            <button class="btn-eliminar" (click)="eliminarTema(tema); $event.stopPropagation()">🗑️</button>
+          </span>
+        </div>
+      </ng-template>
+
+      <app-contenido-tema [tema]="tema" [modoLectura]="modoLectura"></app-contenido-tema>
+
+      <!-- Nuevo subtema -->
+      <div *ngIf="!modoLectura && nuevoSubtemaPadreId === tema.idTema" class="subtema">
+        <input
+          #inputNuevoSubtema
+          class="input-tema"
+          [(ngModel)]="nombreTemporal"
+          (keydown.enter)="guardarNuevoSubtema(tema)"
+          (keydown.escape)="cancelarNuevoSubtema()"
+          (blur)="cancelarNuevoSubtema()"
+          placeholder="Nuevo subtema..."
+        />
+      </div>
+
+      <!-- Subtemas recursivos -->
+      <ng-container *ngFor="let sub of obtenerSubtemas(tema)">
+        <ng-container *ngTemplateOutlet="renderTema; context: { $implicit: sub, nivel: nivel + 1 }"></ng-container>
+      </ng-container>
+    </div>
+  </ng-template>
+</div>
+
+<app-modal-confirmacion
+  [visible]="modalVisible"
+  [titulo]="modalTitulo"
+  [mensaje]="modalMensaje"
+  (aceptar)="confirmarEliminacionTema()"
+  (cancelar)="cancelarEliminacionTema()">
+</app-modal-confirmacion>

@@ -1,0 +1,85 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+}
+
+.login-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  text-align: center;
+}
+
+.logo {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.titulo {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1c4587;
+}
+
+.subtitulo {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1c4587;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #10335c;
+}
+
+.error {
+  margin-top: 10px;
+  color: red;
+  font-size: 13px;
+}
+
+/* 🔵 Botón de registro */
+.registro-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.registro-btn:hover {
+  background-color: #388e3c;
+}
+
+.registro-texto {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}

@@ -1,0 +1,111 @@
+.perfil-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.perfil-avatar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.avatar-circle {
+  width: 70px;
+  height: 70px;
+  background-color: #003366;
+  color: white;
+  border-radius: 50%;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.perfil-nombre h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.perfil-nombre p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #003366;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.guardar-btn {
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.guardar-btn:hover {
+  background-color: #001c3d;
+}
+
+.eliminar-btn {
+  background-color: #c62828;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.eliminar-btn:hover {
+  background-color: #8e0000;
+}
+
+.error small {
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  padding-right: 40px;
+}
+
+.ojo-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}

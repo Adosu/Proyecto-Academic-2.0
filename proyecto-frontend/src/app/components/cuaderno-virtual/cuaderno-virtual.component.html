@@ -1,0 +1,52 @@
+<div class="cuaderno-container">
+  <div class="sidebar">
+    <h3>Mis Apuntes <span *ngIf="materiaSeleccionada">– {{ materiaSeleccionada.nombreMateria }}</span></h3>
+    <button class="nuevo-btn" (click)="toggleFormulario()">
+      {{ mostrarFormulario ? 'Cancelar' : (modoEdicion ? 'Editar apunte' : '+ Nuevo apunte') }}
+    </button>
+
+    <div class="formulario-nuevo" *ngIf="mostrarFormulario">
+      <input type="text" placeholder="Título" [(ngModel)]="nuevoTitulo" />
+      <textarea placeholder="Resumen (opcional)" [(ngModel)]="nuevoResumen"></textarea>
+      <button (click)="modoEdicion ? guardarCambios() : crearApunte()" [disabled]="!nuevoTitulo.trim()">
+        {{ modoEdicion ? 'Guardar cambios' : 'Guardar apunte' }}
+      </button>
+    </div>
+
+    <div class="lista-apuntes">
+      <div *ngFor="let apunte of apuntes" class="item-apunte" [class.seleccionado]="apunte === apunteSeleccionado">
+        <div class="apunte-info" (click)="seleccionarApunte(apunte)">
+          <h4 [title]="apunte.titulo">{{ apunte.titulo }}</h4>
+          <p *ngIf="apunte.resumen" [title]="apunte.resumen">{{ apunte.resumen }}</p>
+        </div>
+
+        <div class="menu-apunte">
+          <button class="btn-menu" (click)="toggleMenu(apunte.idApunte)">⋯</button>
+
+          <div class="menu-opciones" *ngIf="menuVisibleId === apunte.idApunte">
+            <button (click)="editarApunte(apunte)">✏️ Editar apunte</button>
+            <button (click)="confirmarEliminar(apunte)">🗑️ Eliminar apunte</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contenido">
+    <ng-container *ngIf="apunteSeleccionado; else mensaje">
+      <app-contenido-apunte [apunte]="apunteSeleccionado"></app-contenido-apunte>
+    </ng-container>
+
+    <ng-template #mensaje>
+      <p class="mensaje-seleccion">Selecciona un apunte para comenzar.</p>
+    </ng-template>
+  </div>
+</div>
+
+<app-modal-confirmacion
+  [visible]="modalVisible"
+  [titulo]="modalTitulo"
+  [mensaje]="modalMensaje"
+  (aceptar)="eliminarConfirmado()"
+  (cancelar)="cancelarEliminacion()">
+</app-modal-confirmacion>

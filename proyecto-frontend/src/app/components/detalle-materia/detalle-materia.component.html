@@ -1,0 +1,20 @@
+<div class="detalle-container" *ngIf="materiaSeleccionada">
+  <h2>DETALLE</h2>
+  <div class="detalle-item">
+    <strong>Materia:</strong> {{ materiaSeleccionada.nombreMateria }}
+  </div>
+  <div class="detalle-item">
+    <strong>Curso - Paralelo:</strong> {{ materiaSeleccionada.cursoParalelo }}
+  </div>
+  <div class="detalle-item">
+    <strong>Docente:</strong> {{ materiaSeleccionada.nombreDocente }}
+  </div>
+  <div class="detalle-item">
+    <strong>Horario:</strong> {{ materiaSeleccionada.horario }}
+  </div>
+  <div class="detalle-item">
+    <strong>Clave:</strong>
+    <input class="input-clave" type="text" [(ngModel)]="clave" />
+  </div>
+  <button class="agregar-btn" (click)="inscripcion()">Inscripción</button>
+</div>

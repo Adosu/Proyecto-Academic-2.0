@@ -1,0 +1,112 @@
+.registro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+}
+
+.registro-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+}
+
+.logo {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.titulo {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  margin-bottom: 5px;
+  color: #1c4587;
+}
+
+.subtitulo {
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error small {
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.registrar-btn {
+  background-color: #1c4587;
+}
+
+.registrar-btn:hover {
+  background-color: #10335c;
+}
+
+.cancelar-btn {
+  background-color: #c62828;
+}
+
+.cancelar-btn:hover {
+  background-color: #8e0000;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 38px 10px 10px; /* espacio para el ícono */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ojo-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ojo-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #777;
+}

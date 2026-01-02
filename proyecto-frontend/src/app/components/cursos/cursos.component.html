@@ -1,0 +1,39 @@
+<div class="cursos-container">
+  <h2>Mis cursos</h2>
+  <p>Vista general de curso</p>
+
+  <div class="cursos-grid">
+    <div *ngFor="let materia of materias" class="curso-card">
+      <div class="curso-imagen" [ngStyle]="{
+             'background-image': 'url(' + getImagenFondo(materia) + ')'
+           }">
+      </div>
+
+      <div class="curso-info">
+        <div class="curso-titulo">
+          {{ materia.nombreMateria }} - {{ materia.cursoParalelo }} - {{ materia.nombreDocente }}
+        </div>
+
+        <button class="btn-cuaderno" (click)="irACuadernoVirtual(materia.idMateria)">
+          Cuaderno virtual
+        </button>
+
+        <!-- Menú en parte inferior derecha -->
+        <div class="menu-container" #dropdownMenu>
+          <button class="menu-btn" (click)="toggleMenu(materia.idMateria)">⋮</button>
+          <ul class="menu-opciones" *ngIf="menuAbierto === materia.idMateria">
+            <li (click)="desinscribirse(materia)">Desinscribirse del curso</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-confirmacion
+  [visible]="modalVisible"
+  [titulo]="modalTitulo"
+  [mensaje]="modalMensaje"
+  (aceptar)="confirmarDesinscripcion()"
+  (cancelar)="cancelarDesinscripcion()"
+></app-modal-confirmacion>
