@@ -38,9 +38,13 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/mfe/react-notes.css",
+              "src/assets/mfe/react-reminders.css"
             ],
-            "scripts": [],
+            "scripts": ["src/assets/mfe/notes-app.js",
+                        "src/assets/mfe/reminders-app.js"
+                      ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {

@@ -27,8 +27,8 @@ const UsuarioMateriaController = {
     async inscribir(req, res, next) {
         try {
             const idusuario = req.user?.idUsuario || req.user?.idusuario;
-            const { idmateria } = req.body;
-            const inscripcion = await UsuarioMateriaService.inscribir({ idusuario, idmateria });
+            const { idmateria, clave } = req.body; 
+            const inscripcion = await UsuarioMateriaService.inscribir({ idusuario, idmateria, clave });    
             res.status(201).json(inscripcion);
         } catch (err) {
             res.status(400).json({ error: err.message });

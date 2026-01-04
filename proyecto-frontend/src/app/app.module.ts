@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +26,8 @@ import { ContenidoApunteComponent } from './components/contenido-apunte/contenid
 import { ContenidoTemaComponent } from './components/contenido-tema/contenido-tema.component';
 import { ModalConfirmacionComponent } from './components/modal-confirmacion/modal-confirmacion.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
+import { NotesHostComponent } from './components/notes-host/notes-host.component';
+import { RemindersHostComponent } from './components/reminders-host/reminders-host.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
     ContenidoTemaComponent,
     ModalConfirmacionComponent,
     CalendarioComponent,
+    NotesHostComponent,
+    RemindersHostComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,7 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
     provideClientHydration(withEventReplay()),
     { provide: LOCALE_ID, useValue: 'es-EC' }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

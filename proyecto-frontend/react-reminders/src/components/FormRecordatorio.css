@@ -1,0 +1,88 @@
+.recordatorio-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #1c4587;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.error small {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+button[type="submit"] {
+  background-color: #1c4587;
+}
+
+button[type="submit"]:hover {
+  background-color: #10335c;
+}
+
+button[type="button"] {
+  background-color: #c62828;
+}
+
+button[type="button"]:hover {
+  background-color: #8e0000;
+}
+
+.snackbar-success {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #c62828;
+  color: white;
+}
+
+button[disabled] {
+  background-color: #cccccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}

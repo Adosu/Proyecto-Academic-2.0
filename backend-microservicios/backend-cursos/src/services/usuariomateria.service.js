@@ -1,10 +1,20 @@
 const UsuarioMateria = require('../models/usuariomateria.model');
+const Materia = require('../models/materia.model');
 
 const UsuarioMateriaService = {
     listarPorUsuario: async (idusuario) => {
         return await UsuarioMateria.listarPorUsuario(idusuario);
     },
-    inscribir: async ({ idusuario, idmateria }) => {
+    inscribir: async ({ idusuario, idmateria, clave }) => {
+        const materia = await Materia.buscarPorId(idmateria);
+        if (!materia) {
+            throw new Error('La materia no existe.');
+        }
+        if (materia.clave && materia.clave.trim() !== '') {
+            if (materia.clave !== clave) {
+                throw new Error('Clave de matriculación incorrecta.');
+            }
+        }
         const existe = await UsuarioMateria.buscarInscripcion(idusuario, idmateria);
         if (existe) {
             throw new Error('El usuario ya está inscrito en esta materia.');
